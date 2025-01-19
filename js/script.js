@@ -152,8 +152,13 @@ function updateSectionCounter(type) {
     const header = section.querySelector('h2');
     const items = section.querySelectorAll('.block-item');
     const completedItems = section.querySelectorAll('.block-item.done').length;
+
+    let sectionName = type;
+    // replace underscores with spaces and capitalize first letter of each word
+    sectionName = sectionName.replace(/_/g, ' ');
+    sectionName = sectionName.replace(/\b\w/g, l => l.toUpperCase());
     
-    header.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} (${completedItems}/${items.length})`;
+    header.textContent = `${sectionName} (${completedItems}/${items.length})`;
 }
 //#endregion
 
@@ -302,9 +307,14 @@ fetch(data_path)
             section.className = 'content-section';
             section.dataset.type = type;
 
+            let section_name = type;
+            // replace underscores with spaces and capitalize first letter of each word
+            section_name = section_name.replace(/_/g, ' ');
+            section_name = section_name.replace(/\b\w/g, l => l.toUpperCase());
+
             section.innerHTML = `
                 <div class="section-header">
-                    <h2>${type.charAt(0).toUpperCase() + type.slice(1)}</h2>
+                    <h2>${section_name} (${items.length}/${items.length})</h2>
                     <button class="collapse-toggle">▼</button>
                     <nav id="${type}AlphaNav" class="alpha-nav"></nav>
                 </div>
