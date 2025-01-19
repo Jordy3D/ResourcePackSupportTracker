@@ -269,7 +269,13 @@ function scrollToLetterInSection(letter, sectionType) {
 //#endregion
 
 //#region Data Loading and Grid Creation
-fetch('../data/data.json')
+
+var data_path = 'https://github.com/Jordy3D/ResourcePackSupportTracker/blob/main/data/data.json';
+if (window.location.href.includes('localhost')) {
+    data_path = '../data/data.json';
+}
+
+fetch(data_path)
     .then(response => response.json())
     .then(data => {
         const main = document.querySelector('main');
