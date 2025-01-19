@@ -10,7 +10,7 @@ For instance, a creator could use this tool to track what blocks they have made 
 
 ## Usage
 
-Just go to the URL of the tool and start click on the blocks and the like that you have made textures for.  
+Just go to the [URL of the tool](https://jordy3d.github.io/ResourcePackSupportTracker/) and start click on the blocks and the like that you have made textures for.  
 Ctrl+Click to mark as partially supported or needing special attention. (such as if your texture is broken)
 
 ## Todo
