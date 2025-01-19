@@ -1,4 +1,5 @@
 //#region Initialization and State Management
+const VALID_SECTIONS = ['blocks', 'mobs', 'items', 'technical_blocks'];
 let completedBlocks = new Set(JSON.parse(localStorage.getItem('completedBlocks') || '[]'));
 const collapsedSections = new Set(JSON.parse(localStorage.getItem('collapsedSections') || '[]'));
 const needsAttentionItems = new Set(JSON.parse(localStorage.getItem('needsAttentionItems') || '[]'));
@@ -34,14 +35,11 @@ const importFile = document.getElementById('importFile');
 // Modify the export click handler
 exportBtn.addEventListener('click', () => {
     // Build export data structure maintaining categories
-    const exportData = {
-        blocks: {},
-        mobs: {},
-        items: {}
-    };
+    const exportData = {};
+    VALID_SECTIONS.forEach(type => exportData[type] = {});
 
     // Iterate through each section to maintain category structure
-    Object.keys(exportData).forEach(type => {
+    VALID_SECTIONS.forEach(type => {
         const section = document.querySelector(`section[data-type="${type}"]`);
         if (!section) return;
 
@@ -85,11 +83,11 @@ importFile.addEventListener('change', (e) => {
 
             // Handle both old and new format
             if (data && typeof data === 'object') {
-                if (data.blocks || data.mobs || data.items) {
+                if (VALID_SECTIONS.some(section => data[section])) {
                     // New category-based format
-                    Object.entries(data).forEach(([category, items]) => {
-                        if (items && typeof items === 'object') {
-                            Object.entries(items).forEach(([name, states]) => {
+                    VALID_SECTIONS.forEach(category => {
+                        if (data[category] && typeof data[category] === 'object') {
+                            Object.entries(data[category]).forEach(([name, states]) => {
                                 if (states.done) completedBlocks.add(name);
                                 if (states.needsAttention) needsAttentionItems.add(name);
                             });
@@ -119,7 +117,7 @@ importFile.addEventListener('change', (e) => {
                     block.classList.toggle('needs-attention', !!states.needsAttention);
                 });
 
-                ['blocks', 'mobs', 'items'].forEach(type => {
+                VALID_SECTIONS.forEach(type => {
                     updateSectionCounter(type);
                 });
 
@@ -178,11 +176,17 @@ function filterItems(searchTerm) {
 
     document.querySelectorAll('.block-item').forEach(element => {
         const name = element.querySelector('.block-name').textContent.toLowerCase();
-        element.classList.toggle('hidden', !name.includes(normalizedSearch));
+        const categories = element.dataset.categories ? element.dataset.categories.toLowerCase().split(',') : [];
+        const category = element.dataset.category ? element.dataset.category.toLowerCase() : '';
+        
+        const matchesSearch = name.includes(normalizedSearch) || 
+                            categories.some(cat => cat.includes(normalizedSearch)) ||
+                            category.includes(normalizedSearch);
+        
+        element.classList.toggle('hidden', !matchesSearch);
     });
 
-    // Update all section navigations
-    ['blocks', 'mobs', 'items'].forEach(type => {
+    VALID_SECTIONS.forEach(type => {
         updateSectionNavAvailability(type);
     });
 }
@@ -271,7 +275,7 @@ function scrollToLetterInSection(letter, sectionType) {
 //#region Data Loading and Grid Creation
 
 var data_path = 'https://raw.githubusercontent.com/Jordy3D/ResourcePackSupportTracker/refs/heads/main/data/data.json';
-if (window.location.href.includes('localhost')) {
+if (window.location.href.includes('localhost') || window.location.href.includes('127.0.0.1')) {
     data_path = '../data/data.json';
 }
 
@@ -324,6 +328,14 @@ fetch(data_path)
                 element.className = 'block-item' + 
                     (completedBlocks.has(item.name) ? ' done' : '') +
                     (needsAttentionItems.has(item.name) ? ' needs-attention' : '');
+
+                // Add category data attributes
+                if (item.category) {
+                    element.dataset.category = item.category;
+                }
+                if (item.categories && Array.isArray(item.categories)) {
+                    element.dataset.categories = item.categories.join(',');
+                }
 
                 const imageName = item.image;
                 const imageExt = imageName.split('.').pop();

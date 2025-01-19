@@ -4836,6 +4836,623 @@
             "categories": []
         }
     ],
+    "technical_blocks": [
+        {
+            "name": "Acacia Wall Hanging Sign",
+            "image": "Acacia_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Acacia Wall Sign",
+            "image": "Acacia_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Attached Melon Stem",
+            "image": "Attached_Melon_Stem.webp",
+            "category": ""
+        },
+        {
+            "name": "Attached Pumpkin Stem",
+            "image": "Attached_Pumpkin_Stem.webp",
+            "category": ""
+        },
+        {
+            "name": "Bamboo Wall Hanging Sign",
+            "image": "Bamboo_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Bamboo Wall Sign",
+            "image": "Bamboo_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Big Dripleaf Stem",
+            "image": "Big_Dripleaf_Stem.webp",
+            "category": ""
+        },
+        {
+            "name": "Birch Wall Hanging Sign",
+            "image": "Birch_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Birch Wall Sign",
+            "image": "Birch_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Black Wall Banner",
+            "image": "Black_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Blue Wall Banner",
+            "image": "Blue_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Brain Coral Wall Fan",
+            "image": "Brain_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Brown Wall Banner",
+            "image": "Brown_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Bubble Coral Wall Fan",
+            "image": "Bubble_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Black Candle",
+            "image": "Cake_with_Black_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Blue Candle",
+            "image": "Cake_with_Blue_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Brown Candle",
+            "image": "Cake_with_Brown_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Candle",
+            "image": "Cake_with_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Cyan Candle",
+            "image": "Cake_with_Cyan_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Gray Candle",
+            "image": "Cake_with_Gray_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Green Candle",
+            "image": "Cake_with_Green_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Light Blue Candle",
+            "image": "Cake_with_Light_Blue_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Light Gray Candle",
+            "image": "Cake_with_Light_Gray_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Lime Candle",
+            "image": "Cake_with_Lime_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Magenta Candle",
+            "image": "Cake_with_Magenta_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Orange Candle",
+            "image": "Cake_with_Orange_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Pink Candle",
+            "image": "Cake_with_Pink_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Purple Candle",
+            "image": "Cake_with_Purple_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Red Candle",
+            "image": "Cake_with_Red_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with White Candle",
+            "image": "Cake_with_White_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cake with Yellow Candle",
+            "image": "Cake_with_Yellow_Candle.webp",
+            "category": ""
+        },
+        {
+            "name": "Cave Vines Plant",
+            "image": "Cave_Vines_Plant.webp",
+            "category": ""
+        },
+        {
+            "name": "Cherry Wall Hanging Sign",
+            "image": "Cherry_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Cherry Wall Sign",
+            "image": "Cherry_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Creeper Wall Head",
+            "image": "Creeper_Wall_Head.webp",
+            "category": ""
+        },
+        {
+            "name": "Crimson Wall Hanging Sign",
+            "image": "Crimson_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Crimson Wall Sign",
+            "image": "Crimson_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Cyan Wall Banner",
+            "image": "Cyan_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Dark Oak Wall Hanging Sign",
+            "image": "Dark_Oak_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Dark Oak Wall Sign",
+            "image": "Dark_Oak_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Dead Brain Coral Wall Fan",
+            "image": "Dead_Brain_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Dead Bubble Coral Wall Fan",
+            "image": "Dead_Bubble_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Dead Fire Coral Wall Fan",
+            "image": "Dead_Fire_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Dead Horn Coral Wall Fan",
+            "image": "Dead_Horn_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Dead Tube Coral Wall Fan",
+            "image": "Dead_Tube_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Dragon Wall Head",
+            "image": "Dragon_Wall_Head.webp",
+            "category": ""
+        },
+        {
+            "name": "Fire Coral Wall Fan",
+            "image": "Fire_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Gray Wall Banner",
+            "image": "Gray_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Green Wall Banner",
+            "image": "Green_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Horn Coral Wall Fan",
+            "image": "Horn_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Jungle Wall Hanging Sign",
+            "image": "Jungle_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Jungle Wall Sign",
+            "image": "Jungle_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Kelp Plant",
+            "image": "Kelp_Plant.webp",
+            "category": ""
+        },
+        {
+            "name": "Lava Cauldron",
+            "image": "Lava_Cauldron.webp",
+            "category": ""
+        },
+        {
+            "name": "Light Blue Wall Banner",
+            "image": "Light_Blue_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Light Gray Wall Banner",
+            "image": "Light_Gray_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Lime Wall Banner",
+            "image": "Lime_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Magenta Wall Banner",
+            "image": "Magenta_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Mangrove Wall Hanging Sign",
+            "image": "Mangrove_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Mangrove Wall Sign",
+            "image": "Mangrove_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Oak Wall Hanging Sign",
+            "image": "Oak_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Oak Wall Sign",
+            "image": "Oak_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Orange Wall Banner",
+            "image": "Orange_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Pale Oak Wall Hanging Sign",
+            "image": "Pale_Oak_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Pale Oak Wall Sign",
+            "image": "Pale_Oak_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Piglin Wall Head",
+            "image": "Piglin_Wall_Head.webp",
+            "category": ""
+        },
+        {
+            "name": "Pink Wall Banner",
+            "image": "Pink_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Piston Head",
+            "image": "Piston_Head.webp",
+            "category": ""
+        },
+        {
+            "name": "Player Wall Head",
+            "image": "Player_Wall_Head.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Acacia Sapling",
+            "image": "Potted_Acacia_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Allium",
+            "image": "Potted_Allium.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Azalea",
+            "image": "Potted_Azalea.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Azure Bluet",
+            "image": "Potted_Azure_Bluet.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Bamboo",
+            "image": "Potted_Bamboo.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Birch Sapling",
+            "image": "Potted_Birch_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Blue Orchid",
+            "image": "Potted_Blue_Orchid.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Brown Mushroom",
+            "image": "Potted_Brown_Mushroom.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Cactus",
+            "image": "Potted_Cactus.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Cherry Sapling",
+            "image": "Potted_Cherry_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Cornflower",
+            "image": "Potted_Cornflower.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Crimson Fungus",
+            "image": "Potted_Crimson_Fungus.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Crimson Roots",
+            "image": "Potted_Crimson_Roots.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Dandelion",
+            "image": "Potted_Dandelion.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Dark Oak Sapling",
+            "image": "Potted_Dark_Oak_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Dead Bush",
+            "image": "Potted_Dead_Bush.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Fern",
+            "image": "Potted_Fern.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Flowering Azalea",
+            "image": "Potted_Flowering_Azalea.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Jungle Sapling",
+            "image": "Potted_Jungle_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Lily of the Valley",
+            "image": "Potted_Lily_of_the_Valley.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Mangrove Propagule",
+            "image": "Potted_Mangrove_Propagule.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Oak Sapling",
+            "image": "Potted_Oak_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Orange Tulip",
+            "image": "Potted_Orange_Tulip.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Oxeye Daisy",
+            "image": "Potted_Oxeye_Daisy.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Pale Oak Sapling",
+            "image": "Potted_Pale_Oak_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Pink Tulip",
+            "image": "Potted_Pink_Tulip.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Poppy",
+            "image": "Potted_Poppy.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Red Mushroom",
+            "image": "Potted_Red_Mushroom.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Red Tulip",
+            "image": "Potted_Red_Tulip.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Spruce Sapling",
+            "image": "Potted_Spruce_Sapling.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Torchflower",
+            "image": "Potted_Torchflower.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Warped Fungus",
+            "image": "Potted_Warped_Fungus.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Warped Roots",
+            "image": "Potted_Warped_Roots.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted White Tulip",
+            "image": "Potted_White_Tulip.webp",
+            "category": ""
+        },
+        {
+            "name": "Potted Wither Rose",
+            "image": "Potted_Wither_Rose.webp",
+            "category": ""
+        },
+        {
+            "name": "Powder Snow Cauldron",
+            "image": "Powder_Snow_Cauldron.webp",
+            "category": ""
+        },
+        {
+            "name": "Purple Wall Banner",
+            "image": "Purple_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Red Wall Banner",
+            "image": "Red_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Redstone Wall Torch",
+            "image": "Redstone_Wall_Torch.webp",
+            "category": ""
+        },
+        {
+            "name": "Skeleton Wall Skull",
+            "image": "Skeleton_Wall_Skull.webp",
+            "category": ""
+        },
+        {
+            "name": "Soul Wall Torch",
+            "image": "Soul_Wall_Torch.webp",
+            "category": ""
+        },
+        {
+            "name": "Spruce Wall Hanging Sign",
+            "image": "Spruce_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Spruce Wall Sign",
+            "image": "Spruce_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Tube Coral Wall Fan",
+            "image": "Tube_Coral_Wall_Fan.webp",
+            "category": ""
+        },
+        {
+            "name": "Twisting Vines Plant",
+            "image": "Twisting_Vines_Plant.webp",
+            "category": ""
+        },
+        {
+            "name": "Wall Torch",
+            "image": "Wall_Torch.webp",
+            "category": ""
+        },
+        {
+            "name": "Warped Wall Hanging Sign",
+            "image": "Warped_Wall_Hanging_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Warped Wall Sign",
+            "image": "Warped_Wall_Sign.webp",
+            "category": ""
+        },
+        {
+            "name": "Water Cauldron",
+            "image": "Water_Cauldron.webp",
+            "category": ""
+        },
+        {
+            "name": "Weeping Vines Plant",
+            "image": "Weeping_Vines_Plant.webp",
+            "category": ""
+        },
+        {
+            "name": "White Wall Banner",
+            "image": "White_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Wither Skeleton Wall Skull",
+            "image": "Wither_Skeleton_Wall_Skull.webp",
+            "category": ""
+        },
+        {
+            "name": "Yellow Wall Banner",
+            "image": "Yellow_Wall_Banner.webp",
+            "category": ""
+        },
+        {
+            "name": "Zombie Wall Head",
+            "image": "Zombie_Wall_Head.webp",
+            "category": ""
+        }
+    ],
     "mobs": [
         {
             "name": "Allay",

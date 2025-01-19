@@ -19,12 +19,13 @@ Ctrl+Click to mark as partially supported or needing special attention. (such as
 - [x] Add support for mobs
 - [x] Allow for saving and loading of data
 - [x] Allow for exporting and importing of data
+- [x] Add support for technical blocks
 - [ ] Add support for items
 - [ ] Add support for GUI elements
 - [ ] Add support for particles
 - [ ] Add support for sounds
 - [ ] Add Categories to the data (such as the groups in the Creative inventory)
-- [ ] Allow the categories to be searchable and filterable
+- [x] Allow the categories to be searchable
 
 ## Attribution
 
