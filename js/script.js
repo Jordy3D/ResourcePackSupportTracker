@@ -270,7 +270,7 @@ function scrollToLetterInSection(letter, sectionType) {
 
 //#region Data Loading and Grid Creation
 
-var data_path = 'https://github.com/Jordy3D/ResourcePackSupportTracker/blob/main/data/data.json';
+var data_path = 'https://raw.githubusercontent.com/Jordy3D/ResourcePackSupportTracker/refs/heads/main/data/data.json';
 if (window.location.href.includes('localhost')) {
     data_path = '../data/data.json';
 }
