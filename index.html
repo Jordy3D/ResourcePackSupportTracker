@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Pack Support Tracker</title>
+    <link rel="stylesheet" href="css/magic.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Resource Pack Support Tracker</h1>
+            <div class="header-right">
+                <div class="counter">
+                    <span id="completedCount">0</span>/<span id="totalCount">0</span>
+                </div>
+                <div class="combine-button">
+                    <button class="header-button" id="exportBtn">Export</button>
+                    <button class="header-button" id="importBtn">Import</button>
+                </div>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+                <button class="theme-toggle" id="themeToggle">🌗 Theme</button>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+            <button class="search-clear" id="searchClear" type="button">✕</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sections will be created dynamically -->
+    </main>
+
+    <footer class="footer">
+        <p>Made with ❤️ for the Minecraft community.</p>
+        <p>Images sourced from the <i>real</i> <a href="https://minecraft.wiki/">Minecraft Wiki</a>.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
