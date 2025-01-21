@@ -186,10 +186,12 @@ function filterItems(searchTerm) {
     const isNotDoneFilter = words.includes('!done');
     const isAttentionFilter = words.includes('attention');
     const isNotAttentionFilter = words.includes('!attention');
+    const hasNotesFilter = words.includes('notes');
+    const noNotesFilter = words.includes('!notes');
     
     // Remove special filters from search term for regular text search
     const plainSearch = words
-        .filter(word => !['done', '!done', 'attention', '!attention'].includes(word))
+        .filter(word => !['done', '!done', 'attention', '!attention', 'notes', '!notes'].includes(word))
         .join(' ');
 
     // Uncollapse all sections when searching
@@ -209,6 +211,7 @@ function filterItems(searchTerm) {
         
         const isDone = element.classList.contains('done');
         const needsAttention = element.classList.contains('needs-attention');
+        const hasNotes = itemNotes[element.querySelector('.block-name').textContent]?.length > 0;
         
         const matchesSearch = !plainSearch || 
             name.includes(plainSearch) || 
@@ -219,12 +222,16 @@ function filterItems(searchTerm) {
         const matchesNotDoneFilter = !isNotDoneFilter || !isDone;
         const matchesAttentionFilter = !isAttentionFilter || needsAttention;
         const matchesNotAttentionFilter = !isNotAttentionFilter || !needsAttention;
+        const matchesHasNotesFilter = !hasNotesFilter || hasNotes;
+        const matchesNoNotesFilter = !noNotesFilter || !hasNotes;
         
         const matchesAll = matchesSearch && 
             matchesDoneFilter && 
             matchesNotDoneFilter && 
             matchesAttentionFilter && 
-            matchesNotAttentionFilter;
+            matchesNotAttentionFilter &&
+            matchesHasNotesFilter &&
+            matchesNoNotesFilter;
         
         element.classList.toggle('hidden', !matchesAll);
     });
