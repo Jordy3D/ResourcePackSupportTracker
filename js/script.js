@@ -1,8 +1,10 @@
 //#region Initialization and State Management
 const VALID_SECTIONS = ['blocks', 'mobs', 'items', 'technical_blocks'];
+const NOTE_TYPES = ['Bug', 'Note', 'Todo', 'Question'];
 let completedBlocks = new Set(JSON.parse(localStorage.getItem('completedBlocks') || '[]'));
 const collapsedSections = new Set(JSON.parse(localStorage.getItem('collapsedSections') || '[]'));
 const needsAttentionItems = new Set(JSON.parse(localStorage.getItem('needsAttentionItems') || '[]'));
+const itemNotes = JSON.parse(localStorage.getItem('itemNotes') || '{}');
 //#endregion
 
 //#region Theme Management
@@ -32,13 +34,11 @@ const exportBtn = document.getElementById('exportBtn');
 const importBtn = document.getElementById('importBtn');
 const importFile = document.getElementById('importFile');
 
-// Modify the export click handler
+// Update the export click handler
 exportBtn.addEventListener('click', () => {
-    // Build export data structure maintaining categories
     const exportData = {};
     VALID_SECTIONS.forEach(type => exportData[type] = {});
 
-    // Iterate through each section to maintain category structure
     VALID_SECTIONS.forEach(type => {
         const section = document.querySelector(`section[data-type="${type}"]`);
         if (!section) return;
@@ -47,7 +47,8 @@ exportBtn.addEventListener('click', () => {
             const name = block.querySelector('.block-name').textContent;
             exportData[type][name] = {
                 done: block.classList.contains('done'),
-                needsAttention: block.classList.contains('needs-attention')
+                needsAttention: block.classList.contains('needs-attention'),
+                notes: itemNotes[name] || []
             };
         });
     });
@@ -80,6 +81,7 @@ importFile.addEventListener('change', (e) => {
             // Clear existing sets
             completedBlocks.clear();
             needsAttentionItems.clear();
+            Object.keys(itemNotes).forEach(key => delete itemNotes[key]);
 
             // Handle both old and new format
             if (data && typeof data === 'object') {
@@ -90,6 +92,9 @@ importFile.addEventListener('change', (e) => {
                             Object.entries(data[category]).forEach(([name, states]) => {
                                 if (states.done) completedBlocks.add(name);
                                 if (states.needsAttention) needsAttentionItems.add(name);
+                                if (states.notes && states.notes.length) {
+                                    itemNotes[name] = states.notes;
+                                }
                             });
                         }
                     });
@@ -98,12 +103,16 @@ importFile.addEventListener('change', (e) => {
                     Object.entries(data).forEach(([name, states]) => {
                         if (states.done) completedBlocks.add(name);
                         if (states.needsAttention) needsAttentionItems.add(name);
+                        if (states.notes && states.notes.length) {
+                            itemNotes[name] = states.notes;
+                        }
                     });
                 }
 
                 // Save to localStorage
                 localStorage.setItem('completedBlocks', JSON.stringify([...completedBlocks]));
                 localStorage.setItem('needsAttentionItems', JSON.stringify([...needsAttentionItems]));
+                localStorage.setItem('itemNotes', JSON.stringify(itemNotes));
 
                 // Update UI
                 document.querySelectorAll('.block-item').forEach(block => {
@@ -145,20 +154,22 @@ function updateCounter(totalBlocks) {
     totalCountEl.textContent = totalBlocks;
 }
 
-function updateSectionCounter(type) {
+function updateSectionCounter(type, isSearching = false) {
     const section = document.querySelector(`section[data-type="${type}"]`);
     if (!section) return;
 
     const header = section.querySelector('h2');
     const items = section.querySelectorAll('.block-item');
+    const visibleItems = section.querySelectorAll('.block-item:not(.hidden)');
     const completedItems = section.querySelectorAll('.block-item.done').length;
 
-    let sectionName = type;
-    // replace underscores with spaces and capitalize first letter of each word
-    sectionName = sectionName.replace(/_/g, ' ');
-    sectionName = sectionName.replace(/\b\w/g, l => l.toUpperCase());
+    let sectionName = type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     
-    header.textContent = `${sectionName} (${completedItems}/${items.length})`;
+    if (isSearching) {
+        header.textContent = `${sectionName} (${completedItems}/${items.length}) (found ${visibleItems.length})`;
+    } else {
+        header.textContent = `${sectionName} (${completedItems}/${items.length})`;
+    }
 }
 //#endregion
 
@@ -168,6 +179,18 @@ const searchClear = document.getElementById('searchClear');
 
 function filterItems(searchTerm) {
     const normalizedSearch = searchTerm.toLowerCase();
+    const words = normalizedSearch.split(/\s+/);
+    
+    // Special filter handlers using word matching
+    const isDoneFilter = words.includes('done');
+    const isNotDoneFilter = words.includes('!done');
+    const isAttentionFilter = words.includes('attention');
+    const isNotAttentionFilter = words.includes('!attention');
+    
+    // Remove special filters from search term for regular text search
+    const plainSearch = words
+        .filter(word => !['done', '!done', 'attention', '!attention'].includes(word))
+        .join(' ');
 
     // Uncollapse all sections when searching
     if (normalizedSearch) {
@@ -184,14 +207,31 @@ function filterItems(searchTerm) {
         const categories = element.dataset.categories ? element.dataset.categories.toLowerCase().split(',') : [];
         const category = element.dataset.category ? element.dataset.category.toLowerCase() : '';
         
-        const matchesSearch = name.includes(normalizedSearch) || 
-                            categories.some(cat => cat.includes(normalizedSearch)) ||
-                            category.includes(normalizedSearch);
+        const isDone = element.classList.contains('done');
+        const needsAttention = element.classList.contains('needs-attention');
         
-        element.classList.toggle('hidden', !matchesSearch);
+        const matchesSearch = !plainSearch || 
+            name.includes(plainSearch) || 
+            categories.some(cat => cat.includes(plainSearch)) ||
+            category.includes(plainSearch);
+            
+        const matchesDoneFilter = !isDoneFilter || isDone;
+        const matchesNotDoneFilter = !isNotDoneFilter || !isDone;
+        const matchesAttentionFilter = !isAttentionFilter || needsAttention;
+        const matchesNotAttentionFilter = !isNotAttentionFilter || !needsAttention;
+        
+        const matchesAll = matchesSearch && 
+            matchesDoneFilter && 
+            matchesNotDoneFilter && 
+            matchesAttentionFilter && 
+            matchesNotAttentionFilter;
+        
+        element.classList.toggle('hidden', !matchesAll);
     });
 
+    // Update section counters with search results
     VALID_SECTIONS.forEach(type => {
+        updateSectionCounter(type, normalizedSearch !== '');
         updateSectionNavAvailability(type);
     });
 }
@@ -207,6 +247,8 @@ searchClear.addEventListener('click', () => {
     searchClear.classList.remove('visible');
     filterItems('');
     searchInput.focus();
+    // Reset counters to normal state
+    VALID_SECTIONS.forEach(type => updateSectionCounter(type, false));
 });
 //#endregion
 
@@ -347,11 +389,26 @@ fetch(data_path)
                     element.dataset.categories = item.categories.join(',');
                 }
 
+                // Create base element structure
+                element.innerHTML = `
+                    <button class="info-button">ℹ</button>
+                    <div class="item-content"></div>
+                `;
+
+                const itemContent = element.querySelector('.item-content');
+                const infoButton = element.querySelector('.info-button');
+
+                infoButton.onclick = (e) => {
+                    e.stopPropagation();
+                    createNoteModal(item.name, type);
+                };
+
                 const imageName = item.image;
                 const imageExt = imageName.split('.').pop();
                 const hasVariants = item.variants && Array.isArray(item.variants) && item.variants.length > 0;
 
                 if (hasVariants) {
+                    // Variant handling code
                     element.dataset.variants = JSON.stringify(item.variants);
                     element.dataset.currentVariant = '0';
                     element.dataset.baseName = item.image.split('.')[0];
@@ -359,7 +416,7 @@ fetch(data_path)
 
                     item.image = `${item.image.split('.')[0]}_${item.variants[0]}.${imageExt}`;
 
-                    // spawn all variant images and hide them, except the first one, then cycle them every 5 seconds
+                    // spawn all variant images and hide them
                     item.variants.forEach((variant, idx) => {
                         const img = new Image();
                         name = item.name.replace(' ', '_');
@@ -369,7 +426,7 @@ fetch(data_path)
                         img.alt = item.name;
                         img.style.display = idx === 0 ? 'block' : 'none';
                         img.className = 'variant-image';
-                        element.appendChild(img);
+                        itemContent.appendChild(img);
                     });
 
                     setInterval(() => {
@@ -381,19 +438,18 @@ fetch(data_path)
                         element.querySelector('.variant-image:nth-child(' + (nextVariant + 1) + ')').style.display = 'block';
                     }, 1000);
 
-                    // add the block name to the element
-                    let blockName = document.createElement('div');
-                    blockName.className = 'block-name';
-                    blockName.textContent = item.name;
-                    element.appendChild(blockName);
-
-                }
-                else {
-                    element.innerHTML = `
-                    <img src="images/${type}/${item.image}" alt="${item.name}" onerror="this.src='images/missing.webp'">
-                    <div class="block-name">${item.name}</div>
+                } else {
+                    // Regular item display
+                    itemContent.innerHTML = `
+                        <img src="images/${type}/${item.image}" alt="${item.name}" onerror="this.src='images/missing.webp'">
                     `;
                 }
+
+                // Add name after content
+                const blockName = document.createElement('div');
+                blockName.className = 'block-name';
+                blockName.textContent = item.name;
+                element.appendChild(blockName);
 
                 element.addEventListener('click', (e) => {
                     if (e.ctrlKey || e.metaKey) {  // Check for both Ctrl and Cmd
@@ -468,3 +524,91 @@ document.querySelectorAll('.section-header').forEach(header => {
     });
 });
 //#endregion
+
+function createNoteModal(itemName, type) {
+    const modal = document.createElement('div');
+    modal.className = 'note-modal';
+    modal.innerHTML = `
+        <div class="note-modal-content">
+            <div class="modal-header">
+                <h3>Notes for ${itemName}</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="notes-container"></div>
+                <div class="modal-buttons">
+                    <button class="add-note">+ Add Note</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    function createNoteEntry(noteData = { type: 'Note', text: '' }) {
+        const entry = document.createElement('div');
+        entry.className = 'note-entry';
+        entry.innerHTML = `
+            <select>
+                ${NOTE_TYPES.map(t => `<option ${t === noteData.type ? 'selected' : ''}>${t}</option>`).join('')}
+            </select>
+            <textarea>${noteData.text}</textarea>
+            <button class="delete-note">×</button>
+        `;
+
+        entry.querySelector('.delete-note').onclick = () => entry.remove();
+        return entry;
+    }
+
+    const container = modal.querySelector('.notes-container');
+    const addButton = modal.querySelector('.add-note');
+    const closeButton = modal.querySelector('.close-modal');
+
+    // Load existing notes
+    if (itemNotes[itemName]) {
+        itemNotes[itemName].forEach(note => {
+            container.appendChild(createNoteEntry(note));
+        });
+    }
+
+    // Add click outside to close
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeButton.click();
+        }
+    });
+
+    addButton.onclick = () => container.appendChild(createNoteEntry());
+
+    closeButton.onclick = () => {
+        // Save notes before closing
+        const notes = Array.from(container.querySelectorAll('.note-entry')).map(entry => ({
+            type: entry.querySelector('select').value,
+            text: entry.querySelector('textarea').value.trim()
+        })).filter(note => note.text); // Only save notes with content
+
+        if (notes.length) {
+            itemNotes[itemName] = notes;
+        } else {
+            delete itemNotes[itemName];
+        }
+        localStorage.setItem('itemNotes', JSON.stringify(itemNotes));
+        modal.remove();
+    };
+
+    document.body.appendChild(modal);
+}
+
+// Replace the existing howToUseBtn event listener with this simpler version
+document.getElementById('howToUseBtn').addEventListener('click', () => {
+    const helpModal = document.getElementById('helpModal');
+    helpModal.classList.remove('hidden');
+});
+
+// Add click handlers for the help modal
+const helpModal = document.getElementById('helpModal');
+const helpCloseBtn = helpModal.querySelector('.close-modal');
+
+helpModal.addEventListener('click', (e) => {
+    if (e.target === helpModal) helpModal.classList.add('hidden');
+});
+
+helpCloseBtn.onclick = () => helpModal.classList.add('hidden');

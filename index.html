@@ -1,43 +1,134 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resource Pack Support Tracker</title>
-    <link rel="stylesheet" href="css/magic.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header class="header">
-        <div class="header-content">
-            <h1>Resource Pack Support Tracker</h1>
-            <div class="header-right">
-                <div class="counter">
-                    <span id="completedCount">0</span>/<span id="totalCount">0</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Resource Pack Support Tracker</title>
+        <link rel="stylesheet" href="css/magic.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-content">
+                <h1>Resource Pack Support Tracker</h1>
+                <div class="header-right">
+                    <div class="counter">
+                        <span id="completedCount">0</span>/<span id="totalCount"
+                            >0</span
+                        >
+                    </div>
+                    <div class="combine-button">
+                        <button class="header-button" id="exportBtn">
+                            Export
+                        </button>
+                        <button class="header-button" id="importBtn">
+                            Import
+                        </button>
+                    </div>
+                    <input
+                        type="file"
+                        id="importFile"
+                        accept=".json"
+                        style="display: none"
+                    />
+                    <button class="theme-toggle" id="themeToggle">
+                        🌗 Theme
+                    </button>
                 </div>
-                <div class="combine-button">
-                    <button class="header-button" id="exportBtn">Export</button>
-                    <button class="header-button" id="importBtn">Import</button>
+            </div>
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search..."
+                />
+                <button class="search-clear" id="searchClear" type="button">
+                    ✕
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Sections will be created dynamically -->
+        </main>
+
+        <footer class="footer">
+            <div class="footer-left"></div>
+            <div class="footer-center">
+                <p>Made with ❤️ for the Minecraft community.</p>
+                <p>
+                    Images sourced from the <i>real</i>
+                    <a href="https://minecraft.wiki/">Minecraft Wiki</a>.
+                </p>
+            </div>
+            <div class="footer-right">
+                <button id="howToUseBtn" class="footer-button">
+                    How to Use
+                </button>
+            </div>
+        </footer>
+
+        <div id="helpModal" class="note-modal hidden">
+            <div class="note-modal-content help-modal">
+                <div class="modal-header">
+                    <h3>How to Use</h3>
+                    <button class="close-modal">×</button>
                 </div>
-                <input type="file" id="importFile" accept=".json" style="display: none;">
-                <button class="theme-toggle" id="themeToggle">🌗 Theme</button>
+                <div class="modal-body">
+                    <h4>Basic Features</h4>
+                    <ul>
+                        <li>Click any item to mark it as completed</li>
+                        <li>
+                            Ctrl+Click (Cmd+Click on Mac) to mark an item as
+                            needing attention
+                        </li>
+                        <li>
+                            Click section headers to collapse/expand sections
+                        </li>
+                    </ul>
+
+                    <h4>Search Features</h4>
+                    <ul>
+                        <li>Type any text to search item names</li>
+                        <li>
+                            Use <code>done</code> to show only completed items
+                        </li>
+                        <li>
+                            Use <code>!done</code> to show only incomplete items
+                        </li>
+                        <li>
+                            Use <code>attention</code> to show items needing
+                            attention
+                        </li>
+                        <li>
+                            Use <code>!attention</code> to show items not
+                            needing attention
+                        </li>
+                    </ul>
+
+                    <h4>Notes System</h4>
+                    <ul>
+                        <li>Click the ℹ icon on any item to add notes</li>
+                        <li>
+                            Notes can be categorized as Bug, Note, Todo, or
+                            Question
+                        </li>
+                        <li>
+                            Notes are saved automatically when closing the
+                            modal. Empty notes are removed.
+                        </li>
+                    </ul>
+
+                    <h4>Import/Export</h4>
+                    <ul>
+                        <li>Use Export to save your progress</li>
+                        <li>Use Import to restore a previously saved state</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="Search...">
-            <button class="search-clear" id="searchClear" type="button">✕</button>
-        </div>
-    </header>
 
-    <main>
-        <!-- Sections will be created dynamically -->
-    </main>
-
-    <footer class="footer">
-        <p>Made with ❤️ for the Minecraft community.</p>
-        <p>Images sourced from the <i>real</i> <a href="https://minecraft.wiki/">Minecraft Wiki</a>.</p>
-    </footer>
-
-    <script src="js/script.js"></script>
-</body>
+        <script src="js/script.js"></script>
+    </body>
 </html>
