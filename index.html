@@ -6,22 +6,30 @@
         <title>Resource Pack Support Tracker</title>
         <link rel="stylesheet" href="css/magic.css" />
         <link rel="stylesheet" href="css/styles.css" />
+
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     </head>
     <body>
         <header class="header">
             <div class="header-content">
-                <h1>Resource Pack Support Tracker</h1>
+                <div class="header-left">
+                    <!-- add the logo -->
+                    <img
+                        src="images/logo.png"
+                        alt="Resource Pack Support Tracker Logo"
+                        class="logo"
+                    />
+                    <h1>Resource Pack Support Tracker</h1>
+                </div>
                 <div class="header-right">
-                    <div class="counter">
-                        <span id="completedCount">0</span>/<span id="totalCount"
-                            >0</span
-                        >
+                    <div class="progress" title="">
+                        <span id="completedCount">0</span>/<span id="totalCount">0</span>
                     </div>
                     <div class="combine-button">
-                        <button class="header-button" id="exportBtn">
+                        <button class="header-button" id="exportBtn" title="Export progress to file">
                             Export
                         </button>
-                        <button class="header-button" id="importBtn">
+                        <button class="header-button" id="importBtn" title="Import progress from file">
                             Import
                         </button>
                     </div>
@@ -31,7 +39,7 @@
                         accept=".json"
                         style="display: none"
                     />
-                    <button class="theme-toggle" id="themeToggle">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark theme">
                         🌗 Theme
                     </button>
                 </div>
@@ -42,8 +50,9 @@
                     id="searchInput"
                     class="search-input"
                     placeholder="Search..."
+                    title="Search items by name or tag (use @ for special filters)"
                 />
-                <button class="search-clear" id="searchClear" type="button">
+                <button class="search-clear" id="searchClear" type="button" title="Clear search">
                     ✕
                 </button>
             </div>
@@ -54,7 +63,12 @@
         </main>
 
         <footer class="footer">
-            <div class="footer-left"></div>
+            <div class="footer-left">
+                <p align="left">
+                    Made by Bane. <br>Source code available on
+                    <a href="https://github.com/Jordy3D/ResourcePackSupportTracker"
+                        >GitHub</a>.
+            </div>
             <div class="footer-center">
                 <p>Made with ❤️ for the Minecraft community.</p>
                 <p>
@@ -63,7 +77,7 @@
                 </p>
             </div>
             <div class="footer-right">
-                <button id="howToUseBtn" class="footer-button">
+                <button id="howToUseBtn" class="footer-button" title="View usage instructions">
                     How to Use
                 </button>
             </div>
@@ -76,55 +90,81 @@
                     <button class="close-modal">×</button>
                 </div>
                 <div class="modal-body">
-                    <h4>Basic Features</h4>
-                    <ul>
-                        <li>Click any item to mark it as completed</li>
-                        <li>
+                    <div class="help-section">
+                        <h4>Basic Features</h4>
+                        <p>Click any item to mark it as completed</p>
+                        <p>
                             Ctrl+Click (Cmd+Click on Mac) to mark an item as
                             needing attention
-                        </li>
-                        <li>
-                            Click section headers to collapse/expand sections
-                        </li>
-                    </ul>
+                        </p>
+                        <p>Click section headers to collapse/expand sections</p>
+                    </div>
 
-                    <h4>Search Features</h4>
-                    <ul>
-                        <li>Type any text to search item names</li>
-                        <li>
-                            Use <code>done</code> to show only completed items
-                        </li>
-                        <li>
-                            Use <code>!done</code> to show only incomplete items
-                        </li>
-                        <li>
-                            Use <code>attention</code> to show items needing
-                            attention
-                        </li>
-                        <li>
-                            Use <code>!attention</code> to show items not
-                            needing attention
-                        </li>
-                    </ul>
+                    <div class="help-section">
+                        <h4>Search Features</h4>
+                        <p>
+                            Type any text to search item names. Use the
+                            following tags to search for specific entries.
+                        </p>
+                        <p>
+                            You can negate a search term by prefixing it with a <code>!</code>.
+                        </p>
 
-                    <h4>Notes System</h4>
-                    <ul>
-                        <li>Click the ℹ icon on any item to add notes</li>
-                        <li>
+                        <table>
+                            <tr>
+                                <th>Tag</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td><code>@done</code></td>
+                                <td>Entries marked as complete</td>
+                            </tr>
+                            <tr>
+                                <td><code>@inprogress</code></td>
+                                <td>Entries marked as in progress</td>
+                            </tr>
+                            <tr>
+                                <td><code>@attention</code></td>
+                                <td>Entries marked as needing attention</td>
+                            </tr>
+                            <tr>
+                                <td><code>@tags</code></td>
+                                <td>Entries with tags</td>
+                            </tr>
+                            <tr>
+                                <td><code>@notes</code></td>
+                                <td>Entries with notes</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="help-section">
+                        <h3>Tag Search</h3>
+                        <p>
+                            Use a <code>#</code> followed by the tag name to search for items
+                            with that tag.<br />This works with partial matches
+                            as well.
+                        </p>
+                    </div>
+
+                    <div class="help-section">
+                        <h4>Notes System</h4>
+                        <p>Click the <code>ℹ</code> icon on any item to add notes</p>
+                        <p>
                             Notes can be categorized as Bug, Note, Todo, or
                             Question
-                        </li>
-                        <li>
+                        </p>
+                        <p>
                             Notes are saved automatically when closing the
                             modal. Empty notes are removed.
-                        </li>
-                    </ul>
+                        </p>
+                    </div>
 
-                    <h4>Import/Export</h4>
-                    <ul>
-                        <li>Use Export to save your progress</li>
-                        <li>Use Import to restore a previously saved state</li>
-                    </ul>
+                    <div class="help-section">
+                        <h4>Import/Export</h4>
+                        <p>Use Export to save your progress</p>
+                        <p>Use Import to restore a previously saved state</p>
+                    </div>
                 </div>
             </div>
         </div>
