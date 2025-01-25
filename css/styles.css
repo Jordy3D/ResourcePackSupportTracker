@@ -85,7 +85,7 @@ main {
     margin: 0 auto;
     max-width: min(1000px, 90vw);
     width: 100%;
-    padding: 0 1rem;
+    padding: 0;
     padding-top: 2rem;
     /* Add margin-top to account for fixed header */
     margin-top: calc(var(--header-height) + 1rem);
@@ -294,7 +294,7 @@ code {
 }
 
 .header-content {
-    max-width: 1000px;
+    max-width: min(1000px, 90vw);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -442,7 +442,7 @@ code {
 
 /*#region Search and Jump Navigation Styles*/
 .search-container {
-    max-width: 1000px;
+    max-width: min(1000px, 90vw);
     margin: 1rem auto 0;
     padding: 0 1rem;
     position: relative;
