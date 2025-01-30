@@ -44,17 +44,39 @@
                     </button>
                 </div>
             </div>
-            <div class="search-container">
-                <input
-                    type="text"
-                    id="searchInput"
-                    class="search-input"
-                    placeholder="Search..."
-                    title="Search items by name or tag (use @ for special filters)"
-                />
-                <button class="search-clear" id="searchClear" type="button" title="Clear search">
-                    ✕
+            <div class="header-bottom">
+                <div class="search-container">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Search..."
+                        title="Search items by name or tag (use @ for special filters)"
+                    />
+                    <button class="search-clear" id="searchClear" type="button" title="Clear search">
+                        ✕
+                    </button>
+                </div>
+
+                <button class="advanced-toggle" id="advancedToggle">
+                    ▼
                 </button>
+
+                <div class="advanced-menu" id="advancedMenu">
+                    <div class="filter-group">
+                        <h4>Status Filters</h4>
+                        <button class="filter-button" data-filter="@done">Completed</button>
+                        <button class="filter-button" data-filter="!@done">Not Completed</button>
+                        <button class="filter-button" data-filter="@inprogress">In Progress</button>
+                        <button class="filter-button" data-filter="@attention">Needs Attention</button>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Content Filters</h4>
+                        <button class="filter-button" data-filter="@notes">Has Notes</button>
+                        <button class="filter-button" data-filter="@tags">Has Tags</button>
+                        <button class="filter-button" data-filter="!@notes !@tags">No Notes/Tags</button>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -65,10 +87,11 @@
         <footer class="footer">
             <div class="footer-left">
                 <p align="left">
-                    Made by Bane. <br>Source code available on
-                    <a href="https://github.com/Jordy3D/ResourcePackSupportTracker"
-                        >GitHub</a>.
+                    Made by Bane. <br />Source code available on
+                    <a href="https://github.com/Jordy3D/ResourcePackSupportTracker">GitHub</a>.
+                </p>
             </div>
+
             <div class="footer-center">
                 <p>Made with ❤️ for the Minecraft community.</p>
                 <p>
@@ -141,15 +164,17 @@
                     <div class="help-section">
                         <h3>Tag Search</h3>
                         <p>
-                            Use a <code>#</code> followed by the tag name to search for items
-                            with that tag.<br />This works with partial matches
-                            as well.
+                            Use a <code>#</code> followed by the tag name to
+                            search for items with that tag.<br />This works with
+                            partial matches as well.
                         </p>
                     </div>
 
                     <div class="help-section">
                         <h4>Notes System</h4>
-                        <p>Click the <code>ℹ</code> icon on any item to add notes</p>
+                        <p>
+                            Click the <code>ℹ</code> icon on any item to add notes
+                        </p>
                         <p>
                             Notes can be categorized as Bug, Note, Todo, or
                             Question

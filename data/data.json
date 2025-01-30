@@ -5534,6 +5534,11 @@
         {
             "name": "Cow",
             "image": "Cow.webp",
+            "variants": [
+                "Temperate",
+                "Warm",
+                "Cold"
+            ],
             "tags": [
                 "Passive"
             ]

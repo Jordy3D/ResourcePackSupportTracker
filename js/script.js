@@ -492,6 +492,34 @@ function clearSearch() {
     VALID_SECTIONS.forEach(type => updateSectionCounter(type, false));
 }
 
+// Advanced menu toggle - updated version
+const advancedToggle = document.getElementById('advancedToggle');
+const advancedMenu = document.getElementById('advancedMenu');
+
+advancedToggle.addEventListener('click', (e) => {
+    advancedMenu.classList.toggle('visible');
+    advancedToggle.textContent = advancedMenu.classList.contains('visible') ? '▲' : '▼';
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const searchInput = document.getElementById('searchInput');
+        const filter = button.dataset.filter;
+        
+        // If shift is held, append the filter instead of replacing
+        if (event.shiftKey) {
+            const currentValue = searchInput.value.trim();
+            searchInput.value = currentValue ? `${currentValue} ${filter}` : filter;
+        } else {
+            searchInput.value = filter;
+        }
+        
+        // Trigger the search
+        searchInput.dispatchEvent(new Event('input'));
+    });
+});
+
 //#endregion
 
 //#region Navigation
